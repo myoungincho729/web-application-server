@@ -4,24 +4,20 @@ import java.io.*;
 import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.Marker;
-import util.IOUtils;
-import webserver.HttpHeader;
 import webserver.WebServer;
 
-public class RequestHandler2 extends Thread {
-    private static final Logger log = LoggerFactory.getLogger(RequestHandler2.class);
+//HttpRequest 리팩토링
+public class RequestHandlerV2 extends Thread {
+    private static final Logger log = LoggerFactory.getLogger(RequestHandlerV2.class);
 
     private Socket connection;
 
-    public RequestHandler2(Socket connectionSocket) {
+    public RequestHandlerV2(Socket connectionSocket) {
         this.connection = connectionSocket;
     }
 
