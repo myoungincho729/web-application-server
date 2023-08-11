@@ -1,6 +1,7 @@
 package util;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -35,6 +36,16 @@ public class HttpRequestUtils {
 		}
 		
 		return new Pair(tokens[0], tokens[1]);
+	}
+
+	public static Map<String, String> parseCookies(String cookies) {
+		Map<String, String> cookieMap = new HashMap<>();
+		String[] cookieStrings = cookies.split("; ");
+		for (String cookieString : cookieStrings) {
+			String[] split = cookieString.split("=");
+			cookieMap.put(split[0], split[1]);
+		}
+		return cookieMap;
 	}
 	
 	public static Pair parseHeader(String header) {
