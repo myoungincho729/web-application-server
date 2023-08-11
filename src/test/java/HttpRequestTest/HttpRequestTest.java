@@ -2,7 +2,6 @@ package HttpRequestTest;
 
 import org.junit.Assert;
 import org.junit.Test;
-import refactoring.HttpReq;
 import refactoring.HttpRequest;
 
 import java.io.FileInputStream;
