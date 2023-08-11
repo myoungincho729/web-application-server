@@ -3,6 +3,7 @@ package HttpRequestTest;
 import org.junit.Assert;
 import org.junit.Test;
 import refactoring.HttpReq;
+import refactoring.HttpRequest;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -24,7 +25,7 @@ public class HttpRequestTest {
     @Test
     public void request_POST() throws Exception {
         InputStream in = new FileInputStream(testDir + "Http_Post.txt");
-        HttpReq req = new HttpReq(in);
+        HttpRequest req = new HttpRequest(in);
 
         Assert.assertEquals("POST", req.getMethod());
         Assert.assertEquals("/user/create", req.getPath());

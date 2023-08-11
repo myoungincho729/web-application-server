@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HttpReq {
+public class HttpRequest {
     private String method;
     private String path;
     private String version;
@@ -18,7 +18,7 @@ public class HttpReq {
     private Map<String, String> parameters;
     private String body;
 
-    public HttpReq(InputStream in) throws IOException {
+    public HttpRequest(InputStream in) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
         String[] firstLine = br.readLine().split(" ");
