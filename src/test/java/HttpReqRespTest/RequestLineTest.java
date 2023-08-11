@@ -2,6 +2,7 @@ package HttpReqRespTest;
 
 import org.junit.Assert;
 import org.junit.Test;
+import refactoring.HttpMethod;
 import refactoring.RequestLine;
 
 public class RequestLineTest {
@@ -9,12 +10,12 @@ public class RequestLineTest {
     @Test
     public void create_method() {
         RequestLine line = new RequestLine("GET /index.html HTTP/1.1");
-        Assert.assertEquals("GET", line.getMethod());
+        Assert.assertEquals(HttpMethod.GET, line.getMethod());
         Assert.assertEquals("/index.html", line.getPath());
         Assert.assertEquals("HTTP/1.1", line.getVersion());
 
         line = new RequestLine("POST /index.html HTTP/1.1");
-        Assert.assertEquals("POST", line.getMethod());
+        Assert.assertEquals(HttpMethod.POST, line.getMethod());
         Assert.assertEquals("/index.html", line.getPath());
         Assert.assertEquals("HTTP/1.1", line.getVersion());
     }
@@ -22,7 +23,7 @@ public class RequestLineTest {
     @Test
     public void withParameter() {
         RequestLine line = new RequestLine("GET /create?name=myoungin&password=1234 HTTP/1.1");
-        Assert.assertEquals("GET", line.getMethod());
+        Assert.assertEquals(HttpMethod.GET, line.getMethod());
         Assert.assertEquals("/create", line.getPath());
         Assert.assertEquals("HTTP/1.1", line.getVersion());
         Assert.assertEquals("myoungin", line.getParams().get("name"));

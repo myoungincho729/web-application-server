@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RequestLine {
-    private String method;
+    private HttpMethod method;
     private String path;
     private Map<String, String> queryStrings = new HashMap<>();
     private String version;
@@ -16,7 +16,7 @@ public class RequestLine {
         if (reqLineParts.length != 3) {
             throw new IllegalArgumentException("request line 형식에 맞지 않습니다.");
         }
-        method = reqLineParts[0];
+        method = HttpMethod.valueOf(reqLineParts[0]);
 
         int index = reqLineParts[1].indexOf("?");
         if (index == -1) {
@@ -28,7 +28,7 @@ public class RequestLine {
         version = reqLineParts[2];
     }
 
-    public String getMethod() {
+    public HttpMethod getMethod() {
         return method;
     }
 
