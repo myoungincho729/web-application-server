@@ -43,10 +43,32 @@
 			<div class="span12">
 				<section id="typography">
 				<div class="page-header">
-					<h1>회원가입</h1>
+					<h1>Get회원가입</h1>
 				</div>
 				
 				<form name="user" method="get" action="/create">
+					<table>
+						<tr>
+							<td>사용자 아이디</td>
+							<td><input type="text" name="userId"></td>
+						</tr>
+						<tr>
+							<td>비밀번호</td>
+							<td><input type="password" name="password"></td>
+						</tr>
+						<tr>
+							<td>이름</td>
+							<td><input type="text" name="name"></td>
+						</tr>
+						<tr>
+							<td>이메일</td>
+							<td><input type="text" name="email"></td>
+						</tr>
+					</table>
+					<input type="submit" value="회원가입" />
+				</form>
+					POST 회원가입
+				<form name="user" method="post" action="/create">
 					<table>
 						<tr>
 							<td>사용자 아이디</td>
