@@ -57,6 +57,8 @@ public class RequestHandler extends Thread {
 		String line = "";
 		while (true) {
 			line = br.readLine();
+			System.out.println(line);
+			if (line == null) break;
 			if (line.length() == 0) break;
 			headerStrings.add(line);
 		}
