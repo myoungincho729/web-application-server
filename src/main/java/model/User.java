@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Map;
+
 public class User {
 	private String userId;
 	private String password;
@@ -12,7 +14,14 @@ public class User {
 		this.name = name;
 		this.email = email;
 	}
-	
+	public static User from(Map<String, String> querymap) {
+		return new User(
+				querymap.get("userId"),
+				querymap.get("password"),
+				querymap.get("name"),
+				querymap.get("email")
+		);
+	}
 	public String getUserId() {
 		return userId;
 	}
@@ -33,5 +42,9 @@ public class User {
 	public String toString() {
 		return "User [userId=" + userId + ", password=" + password + ", name="
 				+ name + ", email=" + email + "]";
+	}
+
+	public boolean isCorrectInfo(String userId, String password) {
+		return this.userId.equals(userId) && this.password.equals(password);
 	}
 }
