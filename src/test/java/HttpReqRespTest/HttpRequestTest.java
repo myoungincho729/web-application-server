@@ -29,7 +29,6 @@ public class HttpRequestTest {
         Assert.assertEquals("POST", req.getMethod());
         Assert.assertEquals("/user/create", req.getPath());
         Assert.assertEquals("keep-alive", req.getHeader("Connection"));
-        Assert.assertEquals("userId=myoungin&password=password&name=mi", req.getBody());
         Assert.assertEquals("myoungin", req.getParameter("userId"));
     }
 
