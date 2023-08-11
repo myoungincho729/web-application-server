@@ -71,4 +71,24 @@ public class HttpRequest {
         return parameters.get(param);
     }
 
+    public Map<String, String> getParameters() {
+        return parameters;
+    }
+
+    public boolean checkLogin() {
+        String cookie = getHeader("Cookie");
+        if (cookie == null) {
+            return false;
+        }
+        String[] cookies = cookie.split(";");
+        for (String ck : cookies) {
+            System.out.println(ck);
+            String[] split = ck.split("=");
+            if (split.length != 2) continue;
+            if (split[0].trim().equals("logined") && split[1].trim().equals("true")) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
