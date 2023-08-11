@@ -3,12 +3,14 @@ package webserver;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import model.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class WebServer {
 	private static final Logger log = LoggerFactory.getLogger(WebServer.class);
 	private static final int DEFAULT_PORT = 8080;
+    public static final UserRepository userRepository = new UserRepository();
 	
     public static void main(String argv[]) throws Exception {
         // 서버소켓을 생성한다. 웹서버는 기본적으로 8080번 포트를 사용한다.
@@ -21,6 +23,8 @@ public class WebServer {
             while ((connection = listenSocket.accept()) != null) {
             	RequestHandler requestHandler = new RequestHandler(connection);
                 requestHandler.start();
+                requestHandler.join();
+                userRepository.printUsers();
             }
     	}
     }
