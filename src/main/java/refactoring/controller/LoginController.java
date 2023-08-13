@@ -1,11 +1,13 @@
 package refactoring.controller;
 
+import model.Database;
 import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import refactoring.HttpRequest;
 import refactoring.HttpResponse;
-import webserver.WebServer;
+import session.HttpSession;
+
 
 public class LoginController extends AbstractController {
     private static final Logger log = LoggerFactory.getLogger(CreateUserController.class);
