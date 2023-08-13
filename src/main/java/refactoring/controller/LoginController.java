@@ -21,7 +21,8 @@ public class LoginController extends AbstractController {
         }
         User user = Database.findByUserId(userId);
         if (user != null && user.isCorrectInfo(userId, password)) {
-            response.addHeader("Set-Cookie", "logined=true");
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
             response.sendRedirect("/index.html");
         } else {
             response.sendRedirect("/login-failed.html");
