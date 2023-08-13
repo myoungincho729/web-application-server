@@ -1,20 +1,18 @@
 package model;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Database {
-    Map<String, User> users = new HashMap<>();
+    private static Map<String, User> users = new HashMap<>();
 
-    public User addUser(User user) {
+    public static User addUser(User user) {
         users.put(user.getUserId(), user);
         return user;
     }
-    public User findByUserId(String userId) {
+    public static User findByUserId(String userId) {
         return users.get(userId);
     }
-    public List<User> findAll() {
-        return (List<User>) users.values();
+    public static Collection<User> findAll() {
+        return users.values();
     }
 }
