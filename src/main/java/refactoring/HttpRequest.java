@@ -1,6 +1,7 @@
 package refactoring;
 
 import cookie.HttpCookie;
+import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import session.HttpSession;
@@ -34,7 +35,6 @@ public class HttpRequest {
 
             line = br.readLine();
             while (!line.equals("")) {
-                log.debug("header : {}", line);
                 String[] tokens = line.split(":");
                 headers.put(tokens[0].trim(), tokens[1].trim());
                 line = br.readLine();
@@ -79,18 +79,10 @@ public class HttpRequest {
     }
 
     public boolean checkLogin() {
-        String cookie = getHeader("Cookie");
-        if (cookie == null) {
-            return false;
-        }
-        String[] cookies = cookie.split(";");
-        for (String ck : cookies) {
-            System.out.println(ck);
-            String[] split = ck.split("=");
-            if (split.length != 2) continue;
-            if (split[0].trim().equals("logined") && split[1].trim().equals("true")) {
-                return true;
-            }
+        HttpSession session = getSession();
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+            return true;
         }
         return false;
     }
