@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HttpSession {
-    private Map<String, String> values = new HashMap<>();
+    private Map<String, Object> values = new HashMap<>();
     private String id;
 
     public HttpSession(String id) {
@@ -15,11 +15,11 @@ public class HttpSession {
         return id;
     }
 
-    public void setAttribute(String name, String value) {
+    public void setAttribute(String name, Object value) {
         values.put(name, value);
     }
 
-    public String getAttribute(String name) {
+    public Object getAttribute(String name) {
         return values.get(name);
     }
 
